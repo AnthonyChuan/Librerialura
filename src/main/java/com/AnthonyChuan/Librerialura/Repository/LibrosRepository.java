@@ -14,14 +14,6 @@ public interface LibrosRepository extends JpaRepository<Libros,Long> {
 
     List<Libros> findByTitulo(String titulo);
 
-    List<Libros> findByIdioma(String idioma);
-
-    @Query("SELECT l.autor FROM Libros l WHERE l.autor.nombre LIKE %:nombre%")
-    List<Autor> buscarAutorPorNombre(@Param("nombre") String nombre);
-
-    @Query("SELECT l FROM Libros l WHERE l.titulo LIKE %:titulo%")
-    Optional<Libros> buscarLibroPorTitulo(@Param("titulo") String titulo);
-
     @Query("SELECT l FROM Libros l WHERE l.idioma = :idioma")
     List<Libros> buscarLibrosPorIdioma(@Param("idioma") String idioma);
 
